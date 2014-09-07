@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>PortletTester</title>
+		<meta name="description" content="PortletTester - the framework that releases you from setting up environment for portlet unit tests.">
+		<script type="text/javascript" src="./lib/angular.min.js"></script>
+		<script type="text/javascript" src="./index.js"></script>
+		<link rel="stylesheet" type="text/css" href="./index.css">
+	</head>
+	<body>
+		<div class="header">
+			<div class="header_logo">
+				<span class="header_portlet">Portlet</span>
+				<span class="header_tester">Tester</span>
+			</div>
+		</div>
+		<div ng-app="PortletTester" ng-controller="SlideCtrl" class="content">
+			<div>
+				<div ng-repeat="slide in viewModel.slides" ng-class="{show: isActive($index), not_show: !isActive($index)}" class="slide">
+					<div class="left_panel">
+						<h2>{{slide.title}}</h2>
+						<h3>{{slide.content}}</h3>
+					</div>
+					<div class="right_panel">
+						<img ng-src="{{slide.imageUrl}}" ></img>
+					</div>
+				</div>
+				<div class="button_container">
+					<a href="https://github.com/druglee/portlettester-sample">Sample</a>
+					<a href="https://github.com/druglee/portlettester">GitHub</a>
+				</div>
+				<ul class="slide_switcher">
+					<li ng-repeat="slide in viewModel.slides"
+						ng-click="switchSlide($index)"
+						ng-class="{active: isActive($index)}" />
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
